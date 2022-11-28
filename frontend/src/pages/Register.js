@@ -6,26 +6,25 @@ import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../axios-service';
 
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
+        email:'',
         password: '',
     });
 
-    const { username, password } = formData;
+    const { username, email, password } = formData;
     const onInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const handleLogin = () => {
-        axiosInstance.post('/login', {
-            username, password
+    const handleRegister = () => {
+        axiosInstance.post('/register', {
+            username, email, password
         })
             .then(res => {
-                console.log(res)
-                const { user, token } = res.data
-                localStorage.setItem('token', `Token ${token}`)
-                localStorage.setItem('user', user.username)
-                navigate('/boards')
+                console.log(res.data)
+                
+                navigate('/')
             })
             .catch(err => console.log(err.response))
     }
@@ -35,8 +34,15 @@ const Login = () => {
             <Input
                 type='text'
                 name='username'
-                placeholder='username/email'
+                placeholder='username'
                 value={username}
+                onChange={onInputChange}
+            /><br />
+            <Input
+                type='email'
+                name='email'
+                placeholder='email'
+                value={email}
                 onChange={onInputChange}
             /><br />
             <Input
@@ -46,10 +52,10 @@ const Login = () => {
                 value={password}
                 onChange={onInputChange}
             /><br />
-            <Button onClick={handleLogin} text={<strong>Login</strong>} />
-            <span>Don't have an account. <a href="/register">Register</a></span>
+            <Button onClick={handleRegister} text={<strong>Register</strong>} />
+            <span>Already have an account. <a href="/">Login</a></span>
         </div>
     </div>
 }
 
-export default Login;
+export default Register;
