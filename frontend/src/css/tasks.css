@@ -1,0 +1,23 @@
+
+
+.tasks{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(212, 212, 212);
+    margin: 5px 0;
+    padding: 10px 15px;
+}
+.task-delete{
+    padding: 2px;
+}
+.user-initials{
+    display: inline-block;
+    background-color: #faebd7;
+    color: #000;
+    border-radius: 50%;
+    padding: 2px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    margin: 0 2px;
+}

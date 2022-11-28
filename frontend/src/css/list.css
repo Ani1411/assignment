@@ -1,0 +1,17 @@
+
+
+.lists{
+    display: flex;
+    height: calc(100vh / 1.5);
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgb(212, 212, 212);
+    margin: 5px;
+    padding: 5px;
+    
+}
+
+.task-container{
+    overflow-y: scroll;
+    height: calc((100vh / 1.5) - 50px);
+}
